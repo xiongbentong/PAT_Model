@@ -94,3 +94,43 @@ void DFS(int s, int v) {//s为起点编号,v为当前访问的顶点编号(从�
 	DFS(s, pre[v]);
 	printf("%d\n", v);
 }
+//若有两条及以上可到达最短距离的路径，会给出一个第二标尺。
+//1.给每条边增加一个边权，求在最短路径有多条时要求路径上的花费最小(或最大);
+//2.给每个点增加一个点权，求在最短路径有多条时要求路径上的点权之和最大(或最小);
+//3.有多少条最短路径;
+//1.新增边权,初始化c[s]=0,,其余均为INF，cost[u][v]记录边权;
+for (int v = 0; v < n; v++) {
+	if (vis[v] == false && G[u][v] != INF) {
+		if (d[u] + G[u][v] < d[v]) {
+			d[v] = d[u] + G[u][v];
+			c[v] = c[u] + cost[u][v];
+		}
+		else if (d[u] + G[u][v] == d[v] && c[u] + cost[u][v] < c[v]) {
+			c[v] = c[u] + cost[u][v];
+		}
+	}
+}
+//2.新增点权,weight[u]表示点权,初始化w[s]=weight[s]，其余均为0;
+for (int v = 0; v < n; v++) {
+	if (vis[v] == false && G[u][v] != INF) {
+		if (d[u] + G[u][v] < d[v]) {
+			d[v] = d[u] + G[u][v];
+			w[v] = w[u] +weight[u][v];
+		}
+		else if (d[u] + G[u][v] == d[v] && w[u] + weight[u][v]>c[v]) {
+			w[v] = w[u] + weight[u][v];
+		}
+	}
+}
+//3.求最短路径条数。增加数组num[],令从起点s到达顶点u的最短路径条数为num[u],初始化num[s]=1,其余均为0;
+for (int v = 0; v < n; v++) {
+	if (vis[v] == false && G[u][v] != INF) {
+		if (d[u] + G[u][v] < d[v]) {
+			d[v] = d[u] + G[u][v];
+			num[v] = num[u];
+		}
+		else if (d[u] + G[u][v] == d[v]) {
+			num[v] += num[u];
+		}
+	}
+}
