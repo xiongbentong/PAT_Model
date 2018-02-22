@@ -17,3 +17,7 @@ column 列
 adjacent 邻近的
 capacity 容量
 chronological 时间顺序的
+vertex 顶点
+edge 边
+trave 遍历
+threshold 极限，临界值
