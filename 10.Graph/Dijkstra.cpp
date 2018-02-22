@@ -134,3 +134,48 @@ for (int v = 0; v < n; v++) {
 		}
 	}
 }
+//Dijkstra+DFS
+vector<int> pre[MAXV]
+if (d[u] + G[u][v] < d[v]) {
+	d[v] = d[u] + G[u][v];
+	pre[v].clear();
+	pre[v].push_back(u);
+}
+else if (d[i] + G[u][v] == d[v]) {
+	pre[v].push_back(u);
+}
+int optvalue;//第二标尺最优值
+vector<int> pre[MAXV];//存放结点的前驱结点
+vector<int> path, tempPath;//最优路径，临时路径
+void DFS(int v) {//v为当前访问结点
+	//递归边界
+	if (v == st) {//如果到达了叶子结点st(即路径的起点)
+		tempPath.push_back(v);//将起点st加入临时路径tempPath的最后面
+		int value;
+		//计算路径tempPath上的value值;
+		if (value优于optvalue) {
+			optvalue = value;//更新第二标尺最优值与最优路径
+			path = tempPath;
+		}
+		tempPath.pop_back();//将刚加入的结点删除
+		return;
+	}
+	tempPath.push_back(v);//将当前访问结点加入临时路径tempPath的最后面
+	for (int i = 0; i < pre[v].size(); v++) {
+		DFS(pre[v][i]);//结点v的前驱结点pre[v][i],递归
+	}
+	tempPath.pop_back();//遍历完所有前驱结点,将当前结点v删除
+}
+//边权之和
+int value = 0;
+for (int i = tempPath.size() - 1; i > 0; i--) {//倒着访问结点，循环条件为i>0
+	//当前结点id,下一个结点idNext
+	int id = tempPath[i], idNext = tempPath[i - 1];
+	value += V[id][idNext];//value增加id->idNext的边权
+}
+//点权之和
+int value = 0;
+for (int i = tempPath.size() - 1; i >= 0; i--) {//倒着访问结点，循环条件为i>=0
+	int id = tempPath[i];//当前结点id
+	value += W[id];//value增加结点id的点权
+}
