@@ -16,7 +16,6 @@ stack<node> s;//操作符栈
 queue<node> q;//后缀表达式序列
 map<char, int> op;
 void Change() {//中缀表达式转换为后缀表达式
-	double num;
 	node temp;
 	for (int i = 0; i < str.length();) {
 		if (str[i] >= '0'&&str[i] <= '9') {//如果是数字
@@ -32,14 +31,28 @@ void Change() {//中缀表达式转换为后缀表达式
 			temp.flag = false;//标记是操作符
 			//只要操作符栈的栈顶元素比该操作符的优先级高
 			//就把操作符栈栈顶元素弹出到后缀表达式的队列中
-			while (!s.empty() && op[str[i]] <= op[s.top().op]) {
-				q.push(s.top());
-				s.pop();
+			if (str[i] == '(') {
+				temp.op = str[i];
+				s.push(temp);
+				i++;
 			}
-			temp.op = str[i];
-			s.push(temp);
-			i++;
-
+			else if (str[i] == ')') {
+				while (!s.empty() && s.top().op != '(') {
+					q.push(s.top());
+					s.pop();
+				}
+				s.pop();
+				i++;
+			}
+			else {
+				while (!s.empty() && op[str[i]] <= op[s.top().op]&&s.top().op!='(') {
+					q.push(s.top());
+					s.pop();
+				}
+				temp.op = str[i];
+				s.push(temp);
+				i++;
+			}
 		}
 	}
 	//如果操作符栈中的还有操作符，就把它弹出到后缀表达式队列中
@@ -74,7 +87,7 @@ int main() {
 	op['*'] = op['/'] = 2;
 	while (getline(cin, str), str!="0") {
 		for (string::iterator it = str.begin(); it != str.end(); it++) {
-			if (*it == '0') str.erase(it);//把表达式中的空格全部去掉
+			if (*it == ' ') str.erase(it);//把表达式中的空格全部去掉
 		}
 		while (!s.empty()) s.pop();//初始化栈
 		Change();//将中缀表达式转换为后缀表达式
