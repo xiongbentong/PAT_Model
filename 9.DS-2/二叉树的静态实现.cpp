@@ -66,3 +66,19 @@ void postorder(int root) {
 	postorder(Node[root].rchild);
 	printf("%d\n", root->data);
 }
+//层序遍历
+void LayerOrder(int root) {
+	queue<int> q;
+	q.push(root);
+	while (!q.empty()) {
+		int now = q.front();
+		q.pop();
+		printf("%d", Node[now].data);
+		if (Node[now].lchild != -1) {
+			q.push(Node[now].lchild);
+		}
+		if (Node[now].rchild != -1) {
+			q.push(Node[now].rchild);
+		}
+	}
+}
