@@ -87,6 +87,9 @@ void quickSort(int A[], int left, int right) {
 //随机选择主元，对区间[left,right]进行划分
 #include<cstdlib>
 #include<ctime>
+int main(){
+    srand((unsigned)time(NULL));
+}
 int randPartition(int A[], int left, int right) {
 	//生成[left,right]内的随机数P
 	int p = (round(1.0*rand()/ RAND_MAX)*(right - left) + left);
