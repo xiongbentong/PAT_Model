@@ -1,11 +1,11 @@
 overlapping 重叠
 subproblem 子问题
 substructure 子结构
-Subsequence 子序列
+subsequence 子序列
 approach 方法，途径
 optimal 最优的
 indice 下(上)标
-Stripe 条纹
+stripe 条纹
 hence 因此
 symmetric 对称的，回文的
 binary 二进制的；二元的，二态的;二叉的
@@ -42,3 +42,9 @@ respectively 分别的
 acyclic 非循环的，非周期的
 adjacent 邻近的
 component 组成
+Formation 编队，编成，构造
+duplication 复制，副本
+rounded down 向下取整
+detect 检测
+partition 划分
+disjoint 不相交的
