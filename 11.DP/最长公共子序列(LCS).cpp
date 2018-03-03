@@ -21,7 +21,7 @@ int main() {
 	//状态转移方程
 	for (int i = 1; i <= lenA; i++) {
 		for (int j = 1; j <= lenB; j++) {
-			if (A[i] = B[j]) {
+			if (A[i] == B[j]) {
 				dp[i][j] = dp[i - 1][j - 1] + 1;
 			}
 			else {
