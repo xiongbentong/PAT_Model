@@ -44,7 +44,7 @@ void preorder(int root) {
 	if (root == -1) {
 		return;
 	}
-	printf("%d\n", root->data);
+	printf("%d\n",Node[root].data);
 	preorder(Node[root].lchild);
 	preorder(Node[root].rchild);
 }
