@@ -22,3 +22,4 @@ str.find(str2)//当str2是str的子串时，返回其在str中第一次出现的
 str.find(pos,str2)//从str的pos号位开始匹配str2,返回值与上相同，时间复杂度为O(nm)
 str.replace(pos,len,str2)//把str从pos号位开始，长度为len的子串替换为str2;
 str.replace(it,it2,str2)//把str的迭代器[it1,it2)范围的子串替换为str2,时间复杂度为O(str.length());
+//stoi函数，将数字字符串转换为数字。
