@@ -93,6 +93,7 @@ int main(){
 int randPartition(int A[], int left, int right) {
 	//生成[left,right]内的随机数P
 	int p = (round(1.0*rand()/ RAND_MAX)*(right - left) + left);
+	swap(A[P],A[left]);
 	int temp = A[left];
 	while (left < right) {
 		while (left<right&&A[right]>temp) right--;
