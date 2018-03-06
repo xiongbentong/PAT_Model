@@ -5,7 +5,7 @@
 #include<algorithm>
 using namespace std;
 const int MOD = 1000000007;//模数:1e9+7
-const int P = 10000019;//进制:1e7+9
+const int P = 10000019;//进制:1e7+19
 vector<int> ans;
 //字符串hash
 long long hashFunc(string str) {
