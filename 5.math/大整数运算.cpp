@@ -21,7 +21,7 @@ int compare(bign a, bign b) {
 	else {
 		for (int i = a.len - 1; i >= 0; i--) {
 			if (a.d[i] > b.d[i]) return 1;
-			else if (a.d[i], b.d[i]) return -1;
+			else if (a.d[i]<b.d[i]) return -1;
 		}
 		return 0;
 	}
