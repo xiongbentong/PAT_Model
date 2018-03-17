@@ -1,6 +1,6 @@
 //初始化
 for (int i = 1; i <= N; i++) {
-	fathrt[i] = i;
+	father[i] = i;
 }
 //查找
 int findFather(int x) {
